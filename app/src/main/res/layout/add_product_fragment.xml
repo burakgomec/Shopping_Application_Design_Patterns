@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/textViewProductDetail"
+        android:background="#B39B21"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/productDetail"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        />
+    <ImageView
+        android:id="@+id/productImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/textViewProductDetail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:scaleType="center"
+        android:focusable="true"
+        android:contentDescription="@string/product_image_info" />
+
+
+    <TextView
+        android:id="@+id/textViewImageDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/image_text_info"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:layout_below="@id/productImage"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/imageUrlLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:padding="3dp"
+        android:layout_below="@id/textViewImageDesc"
+        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/black">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/imageUrl"
+            android:textSize="17sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/image_adress"
+            android:maxLines="3"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/productTitleLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:padding="3dp"
+        app:helperTextEnabled="true"
+        app:helperText="Ne sattığını birkaç kelime ile tarif et"
+        android:layout_below="@id/imageUrlLayout"
+        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/black">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/productTitle"
+            android:textSize="17sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/adTitle"
+            android:maxLines="1"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/productPriceLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:padding="3dp"
+        app:helperTextEnabled="true"
+        app:helperText="İyi bir fiyat belirle"
+        android:layout_below="@id/productTitleLayout"
+        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/black">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/productPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:hint="@string/productPrice"
+            android:maxLines="1"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextProductDetailLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:padding="3dp"
+        app:helperTextEnabled="true"
+        app:helperText="Sattığın ürünü detaylı bir şekilde tarif et"
+        android:layout_below="@id/productPriceLayout"
+        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/black">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextProductDetail"
+            android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            android:hint="@string/productDesc"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="#D31B1B"
+        android:text="@string/product_add"
+        android:textAllCaps="false"
+        android:textSize="18sp" />
+
+</RelativeLayout>

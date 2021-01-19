@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ShoppingApplication</string>
+    <string name="showCase">Vitrin</string>
+    <string name="productDetail">İlan detayı</string>
+    <string name="adTitle">Başlık *</string>
+    <string name="productPrice">Fiyat *</string>
+    <string name="productDesc">Açıklama *</string>
+    <string name="product_image_info">Product Image</string>
+    <string name="image_text_info">Galeriden görsel seçiniz ya da görsel adresi ekleyiniz</string>
+    <string name="image_adress">Görsel Adresi</string>
+    <string name="product_add">İlan Ekle</string>
+</resources>
