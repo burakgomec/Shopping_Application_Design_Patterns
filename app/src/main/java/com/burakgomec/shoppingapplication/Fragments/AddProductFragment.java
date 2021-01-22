@@ -3,6 +3,7 @@ package com.burakgomec.shoppingapplication.Fragments;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -11,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,7 +26,9 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.TransitionOptions;
+import com.burakgomec.shoppingapplication.Product;
 import com.burakgomec.shoppingapplication.R;
+import com.burakgomec.shoppingapplication.User;
 
 import org.w3c.dom.Text;
 
@@ -33,18 +37,37 @@ import static android.app.Activity.RESULT_OK;
 public class AddProductFragment extends Fragment {
 
     ImageView imageView;
-    EditText editText;
+    EditText imageUrl,productTitle,productCategory,productPrice,productDetail;
     String url = "https://static.thenounproject.com/png/558642-200.png";
     Uri imageData;
+    Button saveAd;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.add_product_fragment,container,false);
+        return inflater.inflate(R.layout.add_product_fragment,container,false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         imageView = view.findViewById(R.id.productImage);
-        editText = view.findViewById(R.id.imageUrl);
+        imageUrl = view.findViewById(R.id.imageUrl);
+        productTitle = view.findViewById(R.id.productTitle);
+        productCategory = view.findViewById(R.id.productCategory);
+        productPrice = view.findViewById(R.id.productPrice);
+        productDetail = view.findViewById(R.id.productDetail);
+        saveAd = view.findViewById(R.id.saveAd);
 
 
+
+        saveAd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveAd(v);
+            }
+        });
 
 
         Glide.with(view.getContext())
@@ -55,13 +78,31 @@ public class AddProductFragment extends Fragment {
 
         editTextChangeListener(view);
         setImageFromGallery();
-        return view;
     }
 
+    private void saveAd(View view){
 
+        if(productTitle.getText().toString().trim().length() < 2){
+            productTitle.setError("Lütfen alanı doldurunuz");
+        }
+        else if(productCategory.getText().toString().trim().length() <2){
+            productCategory.setError("Lütfen alanı doldurunuz");
+        }
+        else if(productPrice.getText().toString().trim().equals("")){
+            productPrice.setError("Lütfen alanı doldurunuz");
+        }
+        else if(productDetail.getText().toString().trim().length()<3){
+            productDetail.setError("Lütfen alanı doldurunuz");
+        }
+        else{
+            Product product = new Product(url,productTitle.getText().toString(), User.getUser());
+            Product.productsList.add(product);
+            Toast.makeText(view.getContext(),"İlanınız başarıyla kaydedildi!", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private void editTextChangeListener(View view){
-        editText.addTextChangedListener(new TextWatcher() {
+        imageUrl.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 //

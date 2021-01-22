@@ -9,4 +9,5 @@
     <string name="image_text_info">Galeriden görsel seçiniz ya da görsel adresi ekleyiniz</string>
     <string name="image_adress">Görsel Adresi</string>
     <string name="product_add">İlan Ekle</string>
+    <string name="ad_category">Kategori *</string>
 </resources>

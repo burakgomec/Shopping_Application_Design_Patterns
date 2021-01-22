@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.ImageView;
 
 import com.burakgomec.shoppingapplication.Fragments.AddProductFragment;
@@ -23,8 +25,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         bottomNavigationView = findViewById(R.id.bottomNavigation);
+
+        //getWindow().setStatusBarColor(Color.parseColor("#000000"));
 
 
         bottomNavigationItemSelect();
