@@ -6,11 +6,16 @@
         android:title="Ana Sayfa"
         android:icon="@drawable/ic_baseline_home_24" />
     <item
+        android:id="@+id/itemBasket"
+        android:title="Sepet"
+        android:icon="@drawable/ic_baseline_shopping_basket_24" />
+    <item
         android:id="@+id/itemAddProduct"
         android:title="İlan Ekle"
-        android:icon="@drawable/ic_baseline_add_24" />
+        android:icon="@drawable/ic_baseline_add_32" />
+
     <item
         android:id="@+id/itemUserProduct"
-        android:title="İlanlarım"
+        android:title="Bana Özel"
         android:icon="@drawable/ic_baseline_person_24"/>
 </menu>

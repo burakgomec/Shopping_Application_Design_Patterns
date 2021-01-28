@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,13 +23,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestManager;
-import com.bumptech.glide.TransitionOptions;
 import com.burakgomec.shoppingapplication.Product;
 import com.burakgomec.shoppingapplication.R;
 import com.burakgomec.shoppingapplication.User;
-
-import org.w3c.dom.Text;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -38,7 +33,7 @@ public class AddProductFragment extends Fragment {
 
     ImageView imageView;
     EditText imageUrl,productTitle,productCategory,productPrice,productDetail;
-    String url = "https://static.thenounproject.com/png/558642-200.png";
+    String uri = "https://static.thenounproject.com/png/558642-200.png";
     Uri imageData;
     Button saveAd;
 
@@ -70,8 +65,9 @@ public class AddProductFragment extends Fragment {
         });
 
 
+
         Glide.with(view.getContext())
-                .load(url)
+                .load(R.drawable.addimages)
                 .centerCrop()
                 .error(R.drawable.ic_baseline_post_add_24)
                 .into(imageView);
@@ -82,21 +78,23 @@ public class AddProductFragment extends Fragment {
 
     private void saveAd(View view){
 
-        if(productTitle.getText().toString().trim().length() < 2){
-            productTitle.setError("Lütfen alanı doldurunuz");
+        if(productTitle.getText().toString().trim().length() < 2 || productTitle.getText().toString().trim().length() > 18){
+            productTitle.setError("Lütfen alanı doldurunuz(2-18 Karakter)");
         }
-        else if(productCategory.getText().toString().trim().length() <2){
-            productCategory.setError("Lütfen alanı doldurunuz");
+        else if(productCategory.getText().toString().trim().length() <2 || productTitle.getText().toString().trim().length() > 10){
+            productCategory.setError("Lütfen alanı doldurunuz(2-10 Karakter)");
         }
         else if(productPrice.getText().toString().trim().equals("")){
             productPrice.setError("Lütfen alanı doldurunuz");
         }
         else if(productDetail.getText().toString().trim().length()<3){
-            productDetail.setError("Lütfen alanı doldurunuz");
+            productDetail.setError("Lütfen alanı doldurunuz(En Az 3 Karakter)");
         }
         else{
-            Product product = new Product(url,productTitle.getText().toString(), User.getUser());
-            Product.productsList.add(product);
+            int size = Product.getProductsList().size()+1;
+            Product product = new Product(size,uri,productTitle.getText().toString(), User.getUser(),Integer.parseInt(productPrice.getText().toString())
+            ,productDetail.getText().toString());
+            Product.getProductsList().add(product);
             Toast.makeText(view.getContext(),"İlanınız başarıyla kaydedildi!", Toast.LENGTH_SHORT).show();
         }
     }
@@ -112,12 +110,13 @@ public class AddProductFragment extends Fragment {
                 //
             }
             @Override
-            public void afterTextChanged(Editable s) {
-                url = s.toString();
+            public void afterTextChanged(Editable s) { //Link girisi bittikten sonra
+                //uriNew = s.toString();
+                uri = s.toString();
                 Glide.with(view.getContext())
-                        .load(url)
-                        .centerCrop()
-                        .error(R.drawable.ic_baseline_post_add_24)
+                        .load(uri)
+                        .centerCrop().fitCenter()
+                        .error(Drawable.createFromPath(uri))
                         .into(imageView);
             }
         });
@@ -156,6 +155,7 @@ public class AddProductFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == 2 && resultCode == RESULT_OK && data !=null){
             imageData = data.getData();
+            uri = String.valueOf(imageData);
             Glide.with(getContext())
                     .load(imageData)
                     .centerCrop()

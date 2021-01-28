@@ -9,25 +9,29 @@
 <com.google.android.material.card.MaterialCardView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    android:layout_margin="8dp"
     app:strokeColor="@color/white"
     app:strokeWidth="1dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageViewColumn1"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="fitXY"/>
+
         <TextView
             android:id="@+id/textViewColumn1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"/>
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1"
+            android:gravity="center"
+            android:textSize="17sp" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

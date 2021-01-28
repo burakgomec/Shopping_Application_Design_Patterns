@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="7dp"
+    app:strokeWidth="3dp"
+    app:strokeColor="@color/white">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageShoppingCart"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="fitXY"
+            />
+
+        <TextView
+            android:gravity="center"
+            android:padding="5dp"
+            android:id="@+id/productNameShoppingCart"
+            android:layout_margin="5dp"
+            android:layout_toEndOf="@id/imageShoppingCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:textSize="20sp"
+            android:maxLines="2"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:textAlignment="textEnd"
+            android:padding="5dp"
+            android:id="@+id/productPriceShoppingCart"
+            android:layout_margin="5dp"
+            android:layout_below="@id/productNameShoppingCart"
+            android:layout_toEndOf="@id/imageShoppingCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Product Price"
+            android:textColor="@color/black"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/productPriceShoppingCart"
+            android:layout_toEndOf="@id/imageShoppingCart">
+            <Button
+                android:textSize="15sp"
+                android:id="@+id/removeProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="5dp"
+                android:backgroundTint="#2A82DF"
+                android:text="Sil"
+                android:textAllCaps="false"/>
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>
