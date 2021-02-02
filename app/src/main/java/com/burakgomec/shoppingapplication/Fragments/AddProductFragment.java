@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,9 +22,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import com.burakgomec.shoppingapplication.Product;
+import com.burakgomec.shoppingapplication.MessagesBridge.ToastMessage;
+import com.burakgomec.shoppingapplication.MessagesBridge.ToastMessageSender;
+import com.burakgomec.shoppingapplication.Observer.Product;
 import com.burakgomec.shoppingapplication.R;
-import com.burakgomec.shoppingapplication.User;
+import com.burakgomec.shoppingapplication.Observer.User;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -36,6 +37,8 @@ public class AddProductFragment extends Fragment {
     String uri = "https://static.thenounproject.com/png/558642-200.png";
     Uri imageData;
     Button saveAd;
+
+    ToastMessage toastMessage = new ToastMessage(new ToastMessageSender());
 
 
     @Nullable
@@ -81,7 +84,7 @@ public class AddProductFragment extends Fragment {
         if(productTitle.getText().toString().trim().length() < 2 || productTitle.getText().toString().trim().length() > 18){
             productTitle.setError("Lütfen alanı doldurunuz(2-18 Karakter)");
         }
-        else if(productCategory.getText().toString().trim().length() <2 || productTitle.getText().toString().trim().length() > 10){
+        else if(productCategory.getText().toString().trim().length() <2 || productTitle.getText().toString().trim().length() > 15){
             productCategory.setError("Lütfen alanı doldurunuz(2-10 Karakter)");
         }
         else if(productPrice.getText().toString().trim().equals("")){
@@ -95,7 +98,8 @@ public class AddProductFragment extends Fragment {
             Product product = new Product(size,uri,productTitle.getText().toString(), User.getUser(),Integer.parseInt(productPrice.getText().toString())
             ,productDetail.getText().toString());
             Product.getProductsList().add(product);
-            Toast.makeText(view.getContext(),"İlanınız başarıyla kaydedildi!", Toast.LENGTH_SHORT).show();
+            toastMessage.showMessage("İlanınız başarıyla kaydedildi!",view.getContext());
+            User.getUser().getMyProductList().add(product);
         }
     }
 
@@ -129,7 +133,7 @@ public class AddProductFragment extends Fragment {
                 if(ActivityCompat.checkSelfPermission(v.getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
                     //Api>23 sonrası icin gerekli
                     ActivityCompat.requestPermissions(getActivity(),new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},1);
-                    Toast.makeText(getContext(),"Uygulamanın galeriye erişim ayarlarını değiştiriniz", Toast.LENGTH_SHORT).show();
+                    toastMessage.showMessage("Uygulamanın galeriye erişim ayarlarını değiştiriniz", getContext());
                 }
                 else{
                     //İzin hali hazırda varsa

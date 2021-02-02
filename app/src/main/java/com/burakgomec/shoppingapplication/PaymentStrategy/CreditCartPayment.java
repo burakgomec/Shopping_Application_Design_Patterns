@@ -1,7 +1,10 @@
 package com.burakgomec.shoppingapplication.PaymentStrategy;
 
+import com.burakgomec.shoppingapplication.ShoppingCart;
+
 public class CreditCartPayment implements IPayment {
 
+    //Kredi kartı yöntemi ile ödeme
 
     private String name;
     private String cvv;
@@ -16,9 +19,18 @@ public class CreditCartPayment implements IPayment {
 
 
     @Override
-    public void pay(Integer amount) {
+    public boolean pay(Integer amount) {
+        //Bu kısımda banka servisi ile iletisim kurulabilir, onay durumunda odeme degeri true atanmaktadır,
+        //bankadan red gelmesi durumunda false atanıp hata verilmektedir.
 
-        System.out.println(amount+"Tutar kredi kartı ile ödendi");
+        if(true){ //Test icin true degeri atanmaktadır
+            System.out.println(amount+"  TL Tutar kredi kartı ile ödendi");
+            return true;
+        }
+        else{
+            System.out.println("Ödeme yönteminde bir sorun oluştu!");
+            return false;
+        }
 
     }
 }

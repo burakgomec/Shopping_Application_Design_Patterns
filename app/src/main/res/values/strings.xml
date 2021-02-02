@@ -18,4 +18,10 @@
     <string name="title_notifications">Notifications</string>
     <string name="add_to_basket">Sepete Ekle</string>
     <string name="complete_order">Alışverişi Tamamla</string>
+    <string name="total_price">Toplam Tutar:</string>
+    <string name="credit_cart_payment">Kredi Kartı İle Ödeme</string>
+    <string name="remittance_payment">Havale İle Ödeme</string>
+    <string name="adress_text">Teslimat Adresi</string>
+    <string name="cargo_text">KARGO</string>
+    <string name="free_cargo_text">Ücretsiz,3 iş günü içinde</string>
 </resources>

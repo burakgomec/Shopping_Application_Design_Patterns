@@ -16,18 +16,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.burakgomec.shoppingapplication.Fragments.ProductDetailFragment;
-import com.burakgomec.shoppingapplication.Product;
+import com.burakgomec.shoppingapplication.Observer.Product;
 import com.burakgomec.shoppingapplication.R;
 
 import java.util.ArrayList;
 
-public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecyclerAdapter.ViewHolder> {
+public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecyclerAdapter.ViewHolder> { //Vitrindeki ürünler için recyler adapter
     //Adapter Tasarım Deseni uygulanarak veriler bir view'a baglanmaktadır
 
-    private String uri;
-    private String text;
     private final Context context;
     private final ArrayList<Product> productList = Product.getProductsList();
+
 
     public ProductRecyclerAdapter(Context context){
         this.context = context;
@@ -79,7 +78,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
 
             Fragment productDetailFragment = new ProductDetailFragment();
             FragmentManager manager = ((AppCompatActivity)context).getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.fragmentContainer,productDetailFragment).commit();
+            manager.beginTransaction().replace(R.id.fragmentContainer,productDetailFragment).addToBackStack(null).commit();
 
             Bundle bundle = new Bundle();
             bundle.putInt("position",position);

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F3F1F1">
+
+    <TextView
+        android:id="@+id/textViewPaymentTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Ödeme"
+        android:textSize="22sp"
+        android:background="#2A82DF"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/textViewPrice"
+        android:layout_below="@id/textViewPaymentTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tutar:"
+        android:textAlignment="textStart"
+        android:textColor="#39AF3B"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:fontFamily="sans-serif-black"
+        android:textSize="19sp"/>
+
+    <TextView
+        android:id="@+id/textViewCargo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cargo_text"
+        android:layout_below="@id/textViewPrice"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"
+        android:textSize="13sp"
+        />
+
+    <TextView
+        android:id="@+id/textViewCargo2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/free_cargo_text"
+        android:layout_below="@id/textViewCargo"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
+        android:background="@color/white"
+        android:textSize="15sp"
+        />
+
+
+    <TextView
+        android:id="@+id/textViewAdressInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TESLİMAT ADRESİ"
+        android:layout_below="@id/textViewCargo2"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="13sp"
+        android:padding="5dp"/>
+
+
+    <EditText
+        android:id="@+id/test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewAdressInfo"
+        android:background="@color/white"
+        android:hint="Üyelik Adresi"
+        android:textColorHint="@color/black"
+        android:textSize="17sp"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingEnd="15dp"
+        android:maxLines="2"
+        />
+
+
+
+
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/textViewSelectPaymentType"
+        android:layout_below="@id/test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="19sp"
+        android:text="Bir Ödeme Yöntemi Seçin:"
+        android:layout_margin="10dp"
+        android:fontFamily="sans-serif-black"
+        android:padding="5dp"
+        />
+
+    <RadioGroup
+        android:layout_margin="10dp"
+        android:id="@+id/radioGroup"
+        android:checkedButton="@+id/radio_button_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewSelectPaymentType">
+        <RadioButton
+            android:id="@+id/creditCartPayment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/credit_cart_payment"
+            android:shadowColor="@color/purple_500"/>
+        <RadioButton
+            android:id="@+id/remittancePayment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/remittance_payment"/>
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/completePayment"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ödemeyi Tamamla"
+        android:backgroundTint="#D31B1B"
+        android:layout_margin="10dp"
+        android:textAllCaps="false"/>
+
+</RelativeLayout>

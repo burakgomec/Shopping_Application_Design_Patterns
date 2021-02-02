@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.burakgomec.shoppingapplication.RecyclerAdapters.ProductRecyclerAdapter;
 import com.burakgomec.shoppingapplication.R;
 
-public class HomeFragment  extends Fragment {
+public class HomeFragment  extends Fragment { //Vitrin Anasayfası
 
     RecyclerView recyclerView;
 
@@ -33,7 +33,6 @@ public class HomeFragment  extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(),2));
         recyclerView.setAdapter(productRecyclerAdapter);
 
-        //AutoFitGridLayoutManager layoutManager = new AutoFitGridLayoutManager(view.getContext(), 2);
 
     }
 }

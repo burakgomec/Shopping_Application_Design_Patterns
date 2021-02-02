@@ -4,12 +4,11 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-public abstract class ObservableProduct {
+public abstract class ObservableProduct { //Gözlemlenen ilanlar
 
     private final ArrayList<IObserverUser> users;
 
     protected String message;
-
 
     public  ObservableProduct(){
         users = new ArrayList<>();

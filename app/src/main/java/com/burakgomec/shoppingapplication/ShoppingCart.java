@@ -1,13 +1,13 @@
 package com.burakgomec.shoppingapplication;
 
+import com.burakgomec.shoppingapplication.Observer.Product;
 import com.burakgomec.shoppingapplication.PaymentStrategy.IPayment;
 
 import java.util.ArrayList;
 
-public class ShoppingCart {
-    //Her bir kullanıcı aynı anda tek bir alışveriş sepetine sahip olabilecegi icin singleton tasarım deseni kullanılmıstır
+public class ShoppingCart { //Singleton Tasarım Deseni
+    //Kullanıcı tek bir alışveriş sepetine sahip olabilecegi icin singleton tasarım deseni kullanılmıstır
 
-    private Boolean paid = true;
     private final ArrayList<Product> selectedProducts; //Farklı sınıflardan erişmek amacıyla public erişim belirtiliyor
     private IPayment payment;
     private static ShoppingCart shoppingCart;
@@ -17,7 +17,7 @@ public class ShoppingCart {
     } //Tek bir alısveris listesi yaratılarak uygulama boyunca bu liste kullanılmaktadır
 
 
-    public static ShoppingCart getInstance(){
+    public static ShoppingCart getInstance(){ //Tek bir obje döndüren method(Single)
         if(shoppingCart == null){
             shoppingCart = new ShoppingCart();
         }
@@ -53,16 +53,10 @@ public class ShoppingCart {
         return price;
     }
 
-    public void pay(){
+    public boolean pay(){
         int sum = calculatePrice();
-        payment.pay(sum);
+        return payment.pay(sum); //Ödeme sonucu true/false dönmektedir
     }
 
-    public Boolean getPaid() {
-        return paid;
-    }
 
-    public void setPaid(Boolean paid) {
-        this.paid = paid;
-    }
 }

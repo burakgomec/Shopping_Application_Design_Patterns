@@ -6,9 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,17 +16,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.burakgomec.shoppingapplication.Product;
+import com.burakgomec.shoppingapplication.Observer.Product;
 import com.burakgomec.shoppingapplication.R;
 import com.burakgomec.shoppingapplication.ShoppingCart;
+import com.burakgomec.shoppingapplication.Observer.User;
 
 
-public class ProductDetailFragment extends Fragment {
+public class ProductDetailFragment extends Fragment { //İlan detayı sayfası
 
     ImageView imageView;
     TextView textDetail,textName,textPrice,textSeller;
     Button addProductToShoppingCart;
     Product getProduct;
+    String productUser;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,46 +51,27 @@ public class ProductDetailFragment extends Fragment {
         addProductToShoppingCart = view.findViewById(R.id.addProductToShoppingCart);
 
 
-        addProductToShoppingCart.setOnClickListener(new View.OnClickListener() { //Sepete Ekle Click listener
-            @Override
-            public void onClick(View v) {
-                addProductToShoppingCart(v);
-            }
-        });
-
         setTexts(view);
+
+
+        if(!productUser.equals(User.getUser().getName())){
+            //İlan kullanıcıya ait ise sepete ekle yetkisi kaldırılıp düzenleme yetkisi(Text) veriliyor
+            addProductToShoppingCart.setOnClickListener(new View.OnClickListener() {//Sepete Ekle Click listener
+                @Override
+                public void onClick(View v) {
+                    addProductToShoppingCart(v);
+                }
+            });
+        }
+
+
+
     }
 
     private void addProductToShoppingCart(View view){
         ShoppingCart.getInstance().addProductToShoppingCart(getProduct);
         Toast.makeText(view.getContext(),"Ürün sepetinize eklendi!", Toast.LENGTH_SHORT).show();
     }
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        if(getView() == null){
-            return;
-        }
-        getView().setFocusableInTouchMode(true);
-        getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new HomeFragment()).commit();
-                    return true;
-                }
-                return false;
-            }
-        });
-    }
-
-
 
     @SuppressLint("SetTextI18n")
     private void setTexts(View view){
@@ -102,6 +83,11 @@ public class ProductDetailFragment extends Fragment {
         textName.setText(getProduct.getName());
         textPrice.setText("Fiyat: "+ getProduct.getPrice() + " TL");
         textSeller.setText(getProduct.getUser().getName() + " / " + getProduct.getUser().getLocation());
+
+        productUser = getProduct.getUser().getName();
+        if(productUser.equals(User.getUser().getName())){ //İlan kullanıcıya ait ise sepete ekle yerine "Düzenle" metni atanıyor
+            addProductToShoppingCart.setText("Düzenle");
+        }
 
     }
 

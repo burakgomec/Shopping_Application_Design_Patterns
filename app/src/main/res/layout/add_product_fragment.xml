@@ -1,172 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <TextView
-        android:id="@+id/textViewProductDetail"
-        android:background="#2A82DF"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/productDetail"
-        android:textSize="22sp"
-        android:padding="10dp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        />
-    <ImageView
-        android:id="@+id/productImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_below="@id/textViewProductDetail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="4dp"
-        android:clickable="true"
-        android:scaleType="center"
-        android:focusable="true"
-        android:contentDescription="@string/product_image_info" />
 
-    <TextView
-        android:id="@+id/textViewImageDesc"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/image_text_info"
-        android:textSize="15sp"
-        android:gravity="center"
-        android:layout_below="@id/productImage"
-        />
+        android:layout_height="wrap_content">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/imageUrlLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="3dp"
-        android:padding="3dp"
-        android:layout_below="@id/textViewImageDesc"
-        app:boxStrokeColor="@color/black"
-        app:hintTextColor="@color/black">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/imageUrl"
-            android:textSize="15sp"
+        <TextView
+            android:id="@+id/textViewProductDetail"
+            android:background="#2A82DF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/image_adress"
-            android:maxLines="3"
-            android:inputType="text"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:text="@string/productDetail"
+            android:textSize="22sp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            />
+        <ImageView
+            android:id="@+id/productImage"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_below="@id/textViewProductDetail"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="4dp"
+            android:clickable="true"
+            android:scaleType="center"
+            android:focusable="true"
+            android:contentDescription="@string/product_image_info" />
 
-    <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/productTitleLayout"
-    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:layout_marginBottom="3dp"
-    android:padding="3dp"
-    app:helperTextEnabled="true"
-    app:helperText="Ne sattığını birkaç kelime ile tarif et"
-    android:layout_below="@id/imageUrlLayout"
-    app:boxStrokeColor="@color/black"
-    app:hintTextColor="@color/black">
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/productTitle"
-        android:textSize="15sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/adTitle"
-        android:maxLines="1"
-        android:inputType="text"/>
-</com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/productCategoryLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:padding="3dp"
-        app:helperTextEnabled="true"
-        app:helperText="Sattığın ürünün kategorisini belirle"
-        android:layout_below="@id/productTitleLayout"
-        app:boxStrokeColor="@color/black"
-        app:hintTextColor="@color/black">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/productCategory"
-            android:textSize="15sp"
+        <TextView
+            android:id="@+id/textViewImageDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/ad_category"
-            android:maxLines="1"
-            android:inputType="text"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:text="@string/image_text_info"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_below="@id/productImage"
+            />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/productPriceLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:padding="3dp"
-        app:helperTextEnabled="true"
-        app:helperText="İyi bir fiyat belirle"
-        android:layout_below="@id/productCategoryLayout"
-        app:boxStrokeColor="@color/black"
-        app:hintTextColor="@color/black">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/productPrice"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/imageUrlLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:hint="@string/productPrice"
-            android:maxLines="1"
-            android:inputType="number"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="3dp"
+            android:padding="3dp"
+            android:layout_below="@id/textViewImageDesc"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/imageUrl"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/image_adress"
+                android:maxLines="3"
+                android:inputType="text"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/productDetailLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:padding="3dp"
-        app:helperTextEnabled="true"
-        app:helperText="Sattığın ürünü detaylı bir şekilde tarif et"
-        android:layout_below="@id/productPriceLayout"
-        app:boxStrokeColor="@color/black"
-        app:hintTextColor="@color/black">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/productDetail"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/productTitleLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:textSize="15sp"
             android:layout_height="wrap_content"
-            android:hint="@string/productDesc"
-            android:inputType="text"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="3dp"
+            android:padding="3dp"
+            app:helperTextEnabled="true"
+            app:helperText="Ne sattığını birkaç kelime ile tarif et"
+            android:layout_below="@id/imageUrlLayout"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/productTitle"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/adTitle"
+                android:maxLines="1"
+                android:inputType="text"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/saveAd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="#D31B1B"
-        android:text="@string/product_add"
-        android:textAllCaps="false"
-        android:textSize="18sp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/productCategoryLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:padding="3dp"
+            app:helperTextEnabled="true"
+            app:helperText="Sattığın ürünün kategorisini belirle"
+            android:layout_below="@id/productTitleLayout"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/productCategory"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/ad_category"
+                android:maxLines="1"
+                android:inputType="text"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-</RelativeLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/productPriceLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:padding="3dp"
+            app:helperTextEnabled="true"
+            app:helperText="İyi bir fiyat belirle"
+            android:layout_below="@id/productCategoryLayout"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/productPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:hint="@string/productPrice"
+                android:maxLines="1"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/productDetailLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:padding="3dp"
+            app:helperTextEnabled="true"
+            app:helperText="Sattığın ürünü detaylı bir şekilde tarif et"
+            android:layout_below="@id/productPriceLayout"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/productDetail"
+                android:layout_width="match_parent"
+                android:textSize="15sp"
+                android:layout_height="wrap_content"
+                android:hint="@string/productDesc"
+                android:inputType="text"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/saveAd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productDetailLayout"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:backgroundTint="#D31B1B"
+            android:text="@string/product_add"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+
+
+</ScrollView>

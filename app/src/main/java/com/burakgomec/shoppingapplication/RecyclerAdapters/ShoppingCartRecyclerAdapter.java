@@ -13,13 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.burakgomec.shoppingapplication.Fragments.ProductDetailFragment;
 import com.burakgomec.shoppingapplication.Fragments.ShoppingCartFragment;
-import com.burakgomec.shoppingapplication.Product;
+import com.burakgomec.shoppingapplication.Observer.Product;
 import com.burakgomec.shoppingapplication.R;
 import com.burakgomec.shoppingapplication.ShoppingCart;
 
@@ -29,10 +27,12 @@ public class ShoppingCartRecyclerAdapter extends RecyclerView.Adapter<ShoppingCa
 
     ArrayList<Product> selectedProducts;
     Context context;
+    TextView totalPrice;
 
-    public ShoppingCartRecyclerAdapter(Context context){
+    public ShoppingCartRecyclerAdapter(Context context,TextView totalPrice){
         this.selectedProducts = ShoppingCart.getInstance().getSelectedProducts();
         this.context = context;
+        this.totalPrice = totalPrice;
     }
 
     @NonNull
@@ -73,24 +73,36 @@ public class ShoppingCartRecyclerAdapter extends RecyclerView.Adapter<ShoppingCa
             removeProduct.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    removeProduct(v);
+                    removeProduct();
                 }
             });
         }
 
-        private void removeProduct(View v){
+        private void removeProduct(){
             int position = getLayoutPosition();
+            calculateTotalPrice(position);
             ShoppingCart.getInstance().removeProductToShoppingCart(selectedProducts.get(position));
             notifyItemRemoved(position);
+
+
+
 
             if(selectedProducts.size() == 0){
                 Fragment shoppingCartFragment = new ShoppingCartFragment();
                 FragmentManager manager = ((AppCompatActivity)context).getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.fragmentContainer,shoppingCartFragment).commit();
             }
+        }
 
-
-
+        private void calculateTotalPrice(Integer position){
+            if(selectedProducts.size() == 1){
+                totalPrice.setText(String.valueOf(0));
+            }
+            else{
+                int sum = Integer.parseInt(totalPrice.getText().toString());
+                sum -= selectedProducts.get(position).getPrice();
+                totalPrice.setText(String.valueOf(sum));
+            }
 
         }
     }

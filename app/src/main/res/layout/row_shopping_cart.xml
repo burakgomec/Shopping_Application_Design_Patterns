@@ -20,7 +20,7 @@
             />
 
         <TextView
-            android:gravity="center"
+            android:textAlignment="textEnd"
             android:padding="5dp"
             android:id="@+id/productNameShoppingCart"
             android:layout_margin="5dp"

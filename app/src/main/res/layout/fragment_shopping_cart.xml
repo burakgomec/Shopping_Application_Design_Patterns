@@ -41,17 +41,38 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/recyclerViewShoppingCart">
 
-                <TextView
-                    android:background="#F3F1F1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-black"
-                    android:padding="10dp"
-                    android:text="Toplam Tutar:"
-                    android:textSize="17sp" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textViewtotalPriceInfo"
+                        android:background="#F3F1F1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-black"
+                        android:padding="10dp"
+                        android:text="@string/total_price"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/textViewPrice"
+                        android:layout_toEndOf="@id/textViewtotalPriceInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:text=""
+                        android:fontFamily="sans-serif-black"
+                        android:padding="10dp"
+                        android:textAlignment="textEnd"
+                        android:background="#F3F1F1"
+                        android:textSize="17sp" />
+                </RelativeLayout>
+
+
             </com.google.android.material.card.MaterialCardView>
 
             <Button
+                android:id="@+id/completeOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/totalPrice"
