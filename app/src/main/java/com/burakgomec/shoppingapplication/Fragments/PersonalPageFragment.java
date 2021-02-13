@@ -18,7 +18,6 @@ import java.util.ArrayList;
 public class PersonalPageFragment extends Fragment {
 
     ListView listViewAd,listViewMessages,listViewFavorites;
-    ArrayList<String> listAd,listMessages, listFavorites;
 
     @Nullable
     @Override
@@ -29,22 +28,8 @@ public class PersonalPageFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        listAd = new ArrayList<>(); listMessages = new ArrayList<>(); listFavorites = new ArrayList<>();
-        listAd.add("Yayında Olanlar"); listAd.add("Yayında Olmayanlar");
-        listMessages.add("İlan Mesajları"); listMessages.add("GeT Mesajları"); listMessages.add("Bilgilendirmeler");
-        listFavorites.add("Favori İlanlar"); listFavorites.add("Favori Aramalar"); listFavorites.add("Favori Satıcılar");
         listViewAd = view.findViewById(R.id.listViewAd);
         listViewMessages = view.findViewById(R.id.listViewMessages);
-        listViewFavorites = view.findViewById(R.id.listViewFavories);
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_list_item_1,listAd);
-        listViewAd.setAdapter(arrayAdapter);
-
-        arrayAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_list_item_1,listMessages);
-        listViewMessages.setAdapter(arrayAdapter);
-
-        arrayAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_list_item_1, listFavorites);
-        listViewFavorites.setAdapter(arrayAdapter);
+        listViewFavorites = view.findViewById(R.id.listViewFavorites);
     }
 }

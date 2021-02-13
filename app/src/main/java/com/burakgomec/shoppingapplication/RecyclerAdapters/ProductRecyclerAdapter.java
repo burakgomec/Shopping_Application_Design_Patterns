@@ -16,12 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.burakgomec.shoppingapplication.Fragments.ProductDetailFragment;
-import com.burakgomec.shoppingapplication.Observer.Product;
+import com.burakgomec.shoppingapplication.ProductObserver.Product;
 import com.burakgomec.shoppingapplication.R;
 
 import java.util.ArrayList;
 
-public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecyclerAdapter.ViewHolder> { //Vitrindeki ürünler için recyler adapter
+public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecyclerAdapter.ViewHolder> { //Vitrindeki ürünler için recyler view adapter sınıfı
     //Adapter Tasarım Deseni uygulanarak veriler bir view'a baglanmaktadır
 
     private final Context context;
@@ -44,6 +44,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
             holder.textView.setText(productList.get(position).getName());
             holder.imageView.setScaleType(ImageView.ScaleType.CENTER);
             Glide.with(context).load(productList.get(position).getUri()).fitCenter().into(holder.imageView);
+            //Glide kütüphanesi fotograf yükleniyor
 
     }
 
@@ -51,7 +52,6 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
     public int getItemCount() {
         return productList.size();
     }
-
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -69,6 +69,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
                 @Override
                 public void onClick(View v) {
                     itemOnClickListener(v);
+                    //Kullanıcının vitrindeki bir ürüne tıklama olayı
                 }
             });
         }
@@ -83,6 +84,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
             Bundle bundle = new Bundle();
             bundle.putInt("position",position);
             productDetailFragment.setArguments(bundle);
+            //Fragmentler arasında ürün pozisyonu tasınıyor
 
         }
     }

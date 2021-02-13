@@ -1,8 +1,6 @@
 package com.burakgomec.shoppingapplication.PaymentStrategy;
 
-public class RemittancePayment implements IPayment{
-
-    //Havale yöntemi ile ödeme
+public class RemittancePayment implements IPayment{ //Havale yöntemi ile ödeme
 
     private String bankName;
 

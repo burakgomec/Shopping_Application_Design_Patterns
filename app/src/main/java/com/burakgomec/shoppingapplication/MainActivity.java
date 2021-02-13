@@ -14,8 +14,8 @@ import android.view.MenuItem;
 import com.burakgomec.shoppingapplication.Fragments.AddProductFragment;
 import com.burakgomec.shoppingapplication.Fragments.HomeFragment;
 import com.burakgomec.shoppingapplication.Fragments.PersonalPageFragment;
-import com.burakgomec.shoppingapplication.Observer.Product;
-import com.burakgomec.shoppingapplication.Observer.User;
+import com.burakgomec.shoppingapplication.ProductObserver.Product;
+import com.burakgomec.shoppingapplication.ProductObserver.User;
 import com.burakgomec.shoppingapplication.Fragments.ShoppingCartFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomNavigation);
 
-        addProducts(); //Ürünlerin run-time da yaratılıp listeye eklendigi method
+        addProducts(); //Ürünlerin calisma anında yaratılıp listeye eklendigi metot
 
         bottomNavigationItemSelect();
 
@@ -39,21 +39,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void addProducts(){ //Uygulama prototip olarak gelistirildiği icin veri tabanı baglanmadı
+    private void addProducts(){
+
+        //Ürün görsellerinin dizin adresi alınıyor
 
         Uri xboxUri = Uri.parse("android.resource://"+getApplicationContext().getPackageName() +"/"+R.drawable.xbox);
         Uri ps5Uri = Uri.parse("android.resource://"+getApplicationContext().getPackageName()+"/"+R.drawable.ps5);
         Uri iphone12Uri = Uri.parse("android.resource://"+getApplicationContext().getPackageName()+"/"+R.drawable.iphone12);
         Uri mbaUri = Uri.parse("android.resource://"+getApplicationContext().getPackageName()+"/"+R.drawable.mba);
 
+        //Ürün görselleri dizinden alınıyor
+
         User ptTechnology = new User(1,"ptTech","İzmir");
         // Hardcode ilanlar var olan kullanıcıdan baska bir user nesnesine baglanıyor
 
         Product xbox = new Product(1,String.valueOf(xboxUri),"Xbox Series S 500 GB",ptTechnology,
-                4800,"Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+                4800,"Lorem ipsum dolor sit amet, consectetur adipiscing elit");
 
         Product ps5 = new Product(2,String.valueOf(ps5Uri),"PS5 Digital Edition",ptTechnology
-                ,8300,"500 GB SSD-2 Adet Gamepad-Ps Plus Live ");
+                ,8300,"500 GB SSD-2 Adet Gamepad-Ps Plus Live");
 
         Product iPhone12 = new Product(3,String.valueOf(iphone12Uri),"iPhone 12 Pro Max",ptTechnology
         ,16000,"Adınıza Faturalı 24 Ay Apple Garantili iPhone 12 128 GB");
@@ -73,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
         ShoppingCart.getInstance().addProductToShoppingCart(ps5);
 
 
-        handler = new Handler(Looper.myLooper()).postDelayed(new Runnable() {
+        handler = new Handler(Looper.myLooper()).postDelayed(new Runnable() { //Calisma anından 2 saniye sonra ps5 isimli urunun fiyatı güncellenmektedir ve
+            //urunu takip edem kullanıcıya bildirim verilmektedir
             @Override
             public void run() {
                 ps5.addObserver(User.getUser()); //Ps5 ilanını kullanıcı dinlemeye alıyor
@@ -110,9 +115,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     @Override
     protected void onPause() {
+        //Uygulamanın duraklatıldıgı yasam döngüsü
         super.onPause();
         Product.getProductsList().clear();
         ShoppingCart.getInstance().getSelectedProducts().clear();

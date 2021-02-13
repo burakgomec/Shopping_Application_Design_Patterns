@@ -3,8 +3,10 @@ package com.burakgomec.shoppingapplication.OrderProxy;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.burakgomec.shoppingapplication.Observer.Product;
-import com.burakgomec.shoppingapplication.Observer.User;
+import com.burakgomec.shoppingapplication.MessagesBridge.ToastMessage;
+import com.burakgomec.shoppingapplication.MessagesBridge.ToastMessageSender;
+import com.burakgomec.shoppingapplication.ProductObserver.Product;
+import com.burakgomec.shoppingapplication.ProductObserver.User;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -19,8 +21,8 @@ public class Order implements  IOrder{
         String info = "Sayın " + user.getName() +
                 "  Siparişiniz Başarıyla Oluşturuldu. \nTakip Numaranız: "+randomNumber;
 
-        Toast.makeText(context,info,Toast.LENGTH_LONG).show(); // değiştir
-
+        ToastMessage toastMessage = new ToastMessage(new ToastMessageSender());
+        toastMessage.showMessage(info,context);
         //Uygulama prototip olarak gelistirildigi icin adres, kullanıcı ve satın alınan urunler
         // parametre olarak alınmıstır. Kargo vb islemler buradan devam edebilmektedir
     }

@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.burakgomec.shoppingapplication.Observer.Product;
+import com.burakgomec.shoppingapplication.ProductObserver.Product;
 import com.burakgomec.shoppingapplication.R;
 import com.burakgomec.shoppingapplication.RecyclerAdapters.ShoppingCartRecyclerAdapter;
 import com.burakgomec.shoppingapplication.ShoppingCart;
@@ -24,7 +24,6 @@ import com.burakgomec.shoppingapplication.ShoppingCart;
 public class ShoppingCartFragment extends Fragment {
 
     public static ShoppingCartRecyclerAdapter shoppingCartRecyclerAdapter;
-    //public static Boolean
     RecyclerView recyclerView;
     Boolean itemControl;
     static TextView totalPrice;
@@ -66,7 +65,6 @@ public class ShoppingCartFragment extends Fragment {
             });
 
         }
-
     }
 
     private void completeOrder(View view){

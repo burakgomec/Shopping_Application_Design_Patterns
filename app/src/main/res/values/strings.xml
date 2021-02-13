@@ -24,4 +24,23 @@
     <string name="adress_text">Teslimat Adresi</string>
     <string name="cargo_text">KARGO</string>
     <string name="free_cargo_text">Ücretsiz,3 iş günü içinde</string>
+    <string name="ad_management">İLAN YÖNETİMİ VE RAPORLAR</string>
+    <string name="personal">Bana Özel</string>
+    <string name="messages">Mesajlar</string>
+    <string name="favorites">Favoriler</string>
+
+    <string-array name="adManagement">
+        <item>Yayında Olanlar</item>
+        <item>Yayında Olmayanlar</item>
+    </string-array>
+    <string-array name="Messages">
+        <item>İlan Mesajları</item>
+        <item>GeT Mesajları</item>
+        <item>Bilgilendirmeler</item>
+    </string-array>
+    <string-array name="Favorites">
+        <item>Favori İlanlar</item>
+        <item>Favori Aramalar</item>
+        <item>Favori Satıcılar</item>
+    </string-array>
 </resources>

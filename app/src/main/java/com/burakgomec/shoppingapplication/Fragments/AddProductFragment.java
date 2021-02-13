@@ -24,9 +24,9 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.burakgomec.shoppingapplication.MessagesBridge.ToastMessage;
 import com.burakgomec.shoppingapplication.MessagesBridge.ToastMessageSender;
-import com.burakgomec.shoppingapplication.Observer.Product;
+import com.burakgomec.shoppingapplication.ProductObserver.Product;
 import com.burakgomec.shoppingapplication.R;
-import com.burakgomec.shoppingapplication.Observer.User;
+import com.burakgomec.shoppingapplication.ProductObserver.User;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -115,7 +115,6 @@ public class AddProductFragment extends Fragment {
             }
             @Override
             public void afterTextChanged(Editable s) { //Link girisi bittikten sonra
-                //uriNew = s.toString();
                 uri = s.toString();
                 Glide.with(view.getContext())
                         .load(uri)
@@ -146,6 +145,7 @@ public class AddProductFragment extends Fragment {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        //Galeriye erisim izni sonucu
         if(requestCode == 1){
             if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -157,6 +157,7 @@ public class AddProductFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        //Galeriden resim secildigi metot
         if(requestCode == 2 && resultCode == RESULT_OK && data !=null){
             imageData = data.getData();
             uri = String.valueOf(imageData);

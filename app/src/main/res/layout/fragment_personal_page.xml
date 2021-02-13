@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F3F1F1">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
         <TextView
             android:id="@+id/textViewTop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="Bana Özel"
+            android:text="@string/personal"
             android:textSize="24sp"
             android:background="#2A82DF"
             android:gravity="center"
             android:layout_alignParentTop="true"
             android:padding="10dp"/>
+
         <TextView
             android:id="@+id/textViewAdManagement"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="İLAN YÖNETİMİ VE RAPORLAR"
+            android:text="@string/ad_management"
             android:layout_below="@id/textViewTop"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
@@ -40,12 +36,14 @@
             android:id="@+id/listViewAd"
             android:layout_below="@id/textViewAdManagement"
             android:layout_width="match_parent"
+            android:entries="@array/adManagement"
             android:layout_height="wrap_content" />
+
         <TextView
             android:id="@+id/textViewMessages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mesajlar"
+            android:text="@string/messages"
             android:layout_below="@id/listViewAd"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
@@ -61,41 +59,28 @@
             android:layout_below="@id/textViewMessages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
-
-
+            android:entries="@array/Messages"
+          />
 
         <TextView
             android:id="@+id/textViewFavorites"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Favoriler"
+            android:text="@string/favorites"
             android:layout_below="@id/listViewMessages"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
             android:padding="5dp"
-            android:textSize="13sp"
-            />
+            android:textSize="13sp" />
 
         <ListView
             android:background="@color/white"
-            android:id="@+id/listViewFavories"
+            android:id="@+id/listViewFavorites"
             android:layout_below="@id/textViewFavorites"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
-
-
-
-
-    </RelativeLayout>
-
-
-
-
-
-
+            android:entries="@array/Favorites" />
 
 </RelativeLayout>

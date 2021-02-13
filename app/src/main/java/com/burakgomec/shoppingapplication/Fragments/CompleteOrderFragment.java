@@ -22,7 +22,7 @@ import com.burakgomec.shoppingapplication.PaymentStrategy.CreditCartPayment;
 import com.burakgomec.shoppingapplication.PaymentStrategy.RemittancePayment;
 import com.burakgomec.shoppingapplication.R;
 import com.burakgomec.shoppingapplication.ShoppingCart;
-import com.burakgomec.shoppingapplication.Observer.User;
+import com.burakgomec.shoppingapplication.ProductObserver.User;
 
 public class CompleteOrderFragment extends Fragment {
 

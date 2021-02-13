@@ -16,10 +16,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.burakgomec.shoppingapplication.Observer.Product;
+import com.burakgomec.shoppingapplication.MessagesBridge.ToastMessage;
+import com.burakgomec.shoppingapplication.MessagesBridge.ToastMessageSender;
+import com.burakgomec.shoppingapplication.ProductObserver.Product;
 import com.burakgomec.shoppingapplication.R;
 import com.burakgomec.shoppingapplication.ShoppingCart;
-import com.burakgomec.shoppingapplication.Observer.User;
+import com.burakgomec.shoppingapplication.ProductObserver.User;
 
 
 public class ProductDetailFragment extends Fragment { //İlan detayı sayfası
@@ -50,10 +52,7 @@ public class ProductDetailFragment extends Fragment { //İlan detayı sayfası
         textSeller = view.findViewById(R.id.textViewProductSeller);
         addProductToShoppingCart = view.findViewById(R.id.addProductToShoppingCart);
 
-
         setTexts(view);
-
-
         if(!productUser.equals(User.getUser().getName())){
             //İlan kullanıcıya ait ise sepete ekle yetkisi kaldırılıp düzenleme yetkisi(Text) veriliyor
             addProductToShoppingCart.setOnClickListener(new View.OnClickListener() {//Sepete Ekle Click listener
@@ -70,7 +69,8 @@ public class ProductDetailFragment extends Fragment { //İlan detayı sayfası
 
     private void addProductToShoppingCart(View view){
         ShoppingCart.getInstance().addProductToShoppingCart(getProduct);
-        Toast.makeText(view.getContext(),"Ürün sepetinize eklendi!", Toast.LENGTH_SHORT).show();
+        ToastMessage toastMessage = new ToastMessage(new ToastMessageSender()); //Bridge Tasarım Deseni
+        toastMessage.showMessage("Ürün sepetinze eklendi",view.getContext());
     }
 
     @SuppressLint("SetTextI18n")

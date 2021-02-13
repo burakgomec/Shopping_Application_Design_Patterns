@@ -17,13 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.burakgomec.shoppingapplication.Fragments.ShoppingCartFragment;
-import com.burakgomec.shoppingapplication.Observer.Product;
+import com.burakgomec.shoppingapplication.ProductObserver.Product;
 import com.burakgomec.shoppingapplication.R;
 import com.burakgomec.shoppingapplication.ShoppingCart;
 
 import java.util.ArrayList;
 
 public class ShoppingCartRecyclerAdapter extends RecyclerView.Adapter<ShoppingCartRecyclerAdapter.ViewHolder> {
+    //Alışveris sepeti fragmenti icin kullanılan recycler view adapter sınıfı
 
     ArrayList<Product> selectedProducts;
     Context context;
@@ -74,6 +75,7 @@ public class ShoppingCartRecyclerAdapter extends RecyclerView.Adapter<ShoppingCa
                 @Override
                 public void onClick(View v) {
                     removeProduct();
+                    //Sepetten ürün silinmek istendiginde
                 }
             });
         }
@@ -82,10 +84,7 @@ public class ShoppingCartRecyclerAdapter extends RecyclerView.Adapter<ShoppingCa
             int position = getLayoutPosition();
             calculateTotalPrice(position);
             ShoppingCart.getInstance().removeProductToShoppingCart(selectedProducts.get(position));
-            notifyItemRemoved(position);
-
-
-
+            notifyItemRemoved(position); //Arayüzden silinen ürün kaldırılıyor
 
             if(selectedProducts.size() == 0){
                 Fragment shoppingCartFragment = new ShoppingCartFragment();
