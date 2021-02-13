@@ -28,17 +28,17 @@ As soon as there is a change in the price of the product, the user is notified o
 This structure was developed with Observer design pattern.**
 
 ## What's Done In This Project
-***Product objects are created in the MainActivity class at runtime. The price of the product named Ps5 is updated after 2 seconds and the user is notified.**
+**-Product objects are created in the MainActivity class at runtime. The price of the product named Ps5 is updated after 2 seconds and the user is notified.**
 
-***There is only one active user in the application.**
+**-There is only one active user in the application.**
 
-***The application has been tested as a view on pixel devices.**
+**-The application has been tested as a view on pixel devices.**
 
-***Recyclerview was used in home fragment and shopping cart fragment.**
+**-Recyclerview was used in home fragment and shopping cart fragment.**
 
-***Glide library was used while editing images.**
+**-Glide library was used while editing images.**
 
-***A prototype for purchasing products has been developed.**
+**-A prototype for purchasing products has been developed.**
 
 
 
