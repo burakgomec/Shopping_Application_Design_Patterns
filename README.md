@@ -40,5 +40,7 @@ This structure was developed with Observer design pattern.**
 
 **-A prototype for purchasing products has been developed.**
 
+## App Screen
+![App Gif](https://github.com/BurakGomec/Shopping_Application_Design_Patterns/blob/main/app.gif)
 
 
