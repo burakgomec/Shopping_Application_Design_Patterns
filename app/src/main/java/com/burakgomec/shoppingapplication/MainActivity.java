@@ -7,8 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.MenuItem;
 
 import com.burakgomec.shoppingapplication.Fragments.AddProductFragment;
@@ -22,7 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
-    boolean handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,16 +72,6 @@ public class MainActivity extends AppCompatActivity {
         //Alışveriş sepetine test amacıyla 2 adet ürün eklenmistir
         ShoppingCart.getInstance().addProductToShoppingCart(xbox);
         ShoppingCart.getInstance().addProductToShoppingCart(ps5);
-
-
-        handler = new Handler(Looper.myLooper()).postDelayed(new Runnable() { //Calisma anından 2 saniye sonra ps5 isimli urunun fiyatı güncellenmektedir ve
-            //urunu takip edem kullanıcıya bildirim verilmektedir
-            @Override
-            public void run() {
-                ps5.addObserver(User.getUser()); //Ps5 ilanını kullanıcı dinlemeye alıyor
-                ps5.setPrice(1000,getApplicationContext()); //PS5 ilanının fiyatı güncelleniyor ve kullanıcı bilgilendiriliyor
-            }
-        },2000);
 
     }
 

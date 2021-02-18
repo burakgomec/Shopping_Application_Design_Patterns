@@ -3,6 +3,8 @@ package com.burakgomec.shoppingapplication.Fragments;
 
 import android.os.Bundle;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 
 import android.view.View;
@@ -17,17 +19,19 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.burakgomec.shoppingapplication.ProductObserver.Product;
+import com.burakgomec.shoppingapplication.ProductObserver.User;
 import com.burakgomec.shoppingapplication.R;
 import com.burakgomec.shoppingapplication.RecyclerAdapters.ShoppingCartRecyclerAdapter;
 import com.burakgomec.shoppingapplication.ShoppingCart;
 
 public class ShoppingCartFragment extends Fragment {
 
-    public static ShoppingCartRecyclerAdapter shoppingCartRecyclerAdapter;
+    ShoppingCartRecyclerAdapter shoppingCartRecyclerAdapter;
     RecyclerView recyclerView;
     Boolean itemControl;
-    static TextView totalPrice;
+    TextView totalPrice;
     Button completeOrder;
+    Handler handler;
 
 
     @Nullable
@@ -48,21 +52,34 @@ public class ShoppingCartFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        totalPrice = view.findViewById(R.id.textViewPrice);
-        completeOrder = view.findViewById(R.id.completeOrder);
         if(itemControl){ //True ise adaptör ile view bagla
             recyclerView = view.findViewById(R.id.recyclerViewShoppingCart);
-            shoppingCartRecyclerAdapter = new ShoppingCartRecyclerAdapter(view.getContext(),totalPrice);
-            shoppingCartRecyclerAdapter.notifyDataSetChanged();
+            totalPrice = view.findViewById(R.id.textViewPrice);
+            completeOrder = view.findViewById(R.id.completeOrder);
+
+            shoppingCartRecyclerAdapter = new ShoppingCartRecyclerAdapter(getContext(),totalPrice);
             recyclerView.setAdapter(shoppingCartRecyclerAdapter);
 
             calculateTotalPrice();
+
             completeOrder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     completeOrder(v);
                 }
             });
+
+            handler = new Handler(Looper.myLooper());
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Product ps5 = Product.getProductsList().get(1);
+                    ps5.addObserver(User.getUser()); //Ps5 ilanını kullanıcı dinlemeye alıyor
+                    ps5.setPrice(1000,view.getContext()); //PS5 ilanının fiyatı güncelleniyor ve kullanıcı bilgilendiriliyor
+                    shoppingCartRecyclerAdapter.notifyDataSetChanged();
+                    calculateTotalPrice();
+                }
+            },2000);
 
         }
     }
@@ -73,7 +90,7 @@ public class ShoppingCartFragment extends Fragment {
                 .commit();
     }
 
-    public static void calculateTotalPrice(){
+    public void calculateTotalPrice(){
         if(ShoppingCart.getInstance().getSelectedProducts().size() != 0 ){
             int sum = 0 ;
             for (Product product: ShoppingCart.getInstance().getSelectedProducts()) {

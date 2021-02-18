@@ -40,13 +40,6 @@ public class Product extends ObservableProduct {  //Dinlenen ürün sınıfında
 
             super.notifyObserver(context); //Ana Class da yer alan dinleyicilere haber veren method çağırılıyor
             //ve toast mesajı vermek icin context argümanı veriliyor
-
-            if(ShoppingCartFragment.shoppingCartRecyclerAdapter != null){
-                //Sepet fragmenti acilmadigi durumda Null Reference hatası engelleniyor
-                ShoppingCartFragment.shoppingCartRecyclerAdapter.notifyDataSetChanged();
-                //Urunun fiyatı degistigi adaptöre bildiriliyor
-
-            }
         }
 
     }

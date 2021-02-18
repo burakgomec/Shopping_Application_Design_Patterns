@@ -78,7 +78,8 @@
                 android:layout_below="@id/totalPrice"
                 android:backgroundTint="#ED3434"
                 android:text="@string/complete_order"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:textAllCaps="false"/>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
